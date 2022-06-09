@@ -1,0 +1,7 @@
+// .sequelizerc
+
+const path = require('path');
+
+module.exports = {
+  config: path.resolve('src/core/database', 'database.config.ts'),
+};
