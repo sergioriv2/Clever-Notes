@@ -19,9 +19,14 @@ export class CategoryService {
 
   // Get a single category
   async getById(id: number): Promise<Category> {
-    return await this.categoryRepository.findOne<Category>({
+    const category = await this.categoryRepository.findOne<Category>({
       where: { deletedAt: null, id },
     });
+
+    if (!category)
+      throw new NotFoundException(`Category with id ${id} Not found`);
+
+    return category;
   }
 
   // Create a new category

@@ -1,5 +1,4 @@
-import { IsNotEmpty, IsBoolean, IsString, IsOptional } from 'class-validator';
-
+import { IsBoolean, IsString, IsOptional } from 'class-validator';
 export class Note {
   readonly id?: number;
 

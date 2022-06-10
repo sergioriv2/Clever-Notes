@@ -17,7 +17,7 @@ import { AuthGuard } from '@nestjs/passport';
 
 @Controller('notes')
 export class NoteController {
-  constructor(private noteService: NoteService) {}
+  constructor(private readonly noteService: NoteService) {}
 
   // Retrieve all notes from the user requesting the endpoint
   @UseGuards(AuthGuard('jwt'))

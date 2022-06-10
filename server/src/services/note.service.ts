@@ -26,7 +26,8 @@ export class NoteService {
     const date = new Date();
 
     return await this.noteRepository.create<Note>({
-      ...note,
+      content: note.content,
+      title: note.title,
       userId: id,
       createdAt: date,
       updatedAt: date,
