@@ -1,12 +1,15 @@
-import { IsNotEmpty } from 'class-validator';
+import { IsNotEmpty, IsBoolean, IsString } from 'class-validator';
 
 export class Note {
-  readonly id: number;
+  readonly id?: number;
 
   @IsNotEmpty()
+  @IsString()
   readonly title: string;
 
-  readonly content: string;
+  @IsString()
+  readonly content?: string;
 
+  @IsBoolean()
   readonly archived: boolean;
 }

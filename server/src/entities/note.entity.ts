@@ -9,7 +9,10 @@ import {
 } from 'sequelize-typescript';
 import { NotexCategory, User } from '../entities/';
 
-@Table
+@Table({
+  paranoid: true,
+  timestamps: true,
+})
 export class Note extends Model<Note> {
   @Column({ type: DataType.INTEGER, autoIncrement: true, primaryKey: true })
   id?: number;
@@ -31,7 +34,7 @@ export class Note extends Model<Note> {
   deletedAt: Date;
 
   @Column({ defaultValue: false })
-  archived: Date;
+  archived: boolean;
 
   @HasMany(() => NotexCategory)
   categories: NotexCategory[];

@@ -1,7 +1,7 @@
 import { IsNotEmpty, IsEmail, MinLength } from 'class-validator';
 
 export class User {
-  readonly id: number;
+  readonly id?: number;
 
   @IsNotEmpty()
   @IsEmail()

@@ -8,7 +8,10 @@ import {
 } from 'sequelize-typescript';
 import { Note } from '../entities/';
 
-@Table
+@Table({
+  paranoid: true,
+  timestamps: true,
+})
 export class User extends Model<User> {
   @Column({ type: DataType.INTEGER, autoIncrement: true, primaryKey: true })
   id?: number;
