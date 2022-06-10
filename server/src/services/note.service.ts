@@ -12,7 +12,7 @@ export class NoteService {
 
   // Get a note by ID
   async getById(id: number, userId: number): Promise<Note> {
-    const data = await this.noteRepository.findOne({
+    const data = await this.noteRepository.findOne<Note>({
       where: { id, userId, deletedAt: null },
     });
 

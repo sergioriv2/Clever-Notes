@@ -3,7 +3,7 @@ import {
   Controller,
   Delete,
   Get,
-  NotFoundException,
+  InternalServerErrorException,
   Param,
   Post,
   Put,
@@ -48,9 +48,9 @@ export class NoteController {
   ): Promise<object> {
     const result = await this.noteService.update(note, id);
 
-    if (!result) throw new NotFoundException();
+    if (!result) throw new InternalServerErrorException();
 
-    return { msg: 'Successfully updated.' };
+    return { results: { msg: 'Successfully updated.' } };
   }
 
   @UseGuards(AuthGuard('jwt'))
@@ -58,8 +58,8 @@ export class NoteController {
   async delete(@Param('id') id: number): Promise<object> {
     const result = await this.noteService.delete(id);
 
-    if (!result) throw new NotFoundException();
+    if (!result) throw new InternalServerErrorException();
 
-    return { msg: 'Successfully updated.' };
+    return { results: { msg: 'Successfully updated.' } };
   }
 }
