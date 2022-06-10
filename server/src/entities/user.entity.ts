@@ -6,17 +6,17 @@ import {
   IsEmail,
   HasMany,
 } from 'sequelize-typescript';
-import { Note } from 'src/modules/note/note.entity';
+import { Note } from '../entities/';
 
 @Table
 export class User extends Model<User> {
   @Column({ type: DataType.INTEGER, autoIncrement: true, primaryKey: true })
   id?: number;
 
-  @Column({ unique: true })
+  @Column({ unique: true, allowNull: false })
   email: string;
 
-  @Column
+  @Column({ allowNull: false })
   password: string;
 
   @Column({ allowNull: true })

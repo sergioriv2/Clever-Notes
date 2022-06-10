@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { NoteController } from './note.controller';
+import { NoteController } from '../controllers/note.controller';
 
 @Module({
   controllers: [NoteController],

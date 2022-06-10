@@ -6,8 +6,8 @@ import {
   BelongsTo,
   ForeignKey,
 } from 'sequelize-typescript';
-import { Category } from 'src/modules/category/category.entity';
-import { Note } from 'src/modules/note/note.entity';
+import { Category } from 'src/entities/category.entity';
+import { Note } from 'src/entities/note.entity';
 
 @Table
 export class NotexCategory extends Model<NotexCategory> {
