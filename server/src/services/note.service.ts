@@ -10,9 +10,10 @@ export class NoteService {
     private readonly noteRepository: typeof Note,
   ) {}
 
-  async getById(id: number): Promise<Note> {
+  // Get a note by ID
+  async getById(id: number, userId: number): Promise<Note> {
     const data = await this.noteRepository.findOne({
-      where: { id, deletedAt: null },
+      where: { id, userId, deletedAt: null },
     });
 
     if (!data) throw new NotFoundException('Note not found.');
@@ -20,6 +21,7 @@ export class NoteService {
     return data;
   }
 
+  // Create a new note
   async create(note: NoteDto, id: number): Promise<Note> {
     const date = new Date();
 
@@ -31,11 +33,14 @@ export class NoteService {
     });
   }
 
-  async getAll(): Promise<Note[]> {
+  // Get all notes from the user
+  async getAll(userId: number): Promise<Note[]> {
     return await this.noteRepository.findAll<Note>({
-      where: { deletedAt: null },
+      where: { deletedAt: null, userId },
     });
   }
+
+  // Update a note
   async update(note: NoteDto, id: number): Promise<boolean> {
     const data = await this.noteRepository.findOne<Note>({
       where: { id, deletedAt: null },
@@ -55,6 +60,7 @@ export class NoteService {
     return true;
   }
 
+  // Delete a note by ID
   async delete(id: number): Promise<boolean> {
     const data = await this.noteRepository.findOne<Note>({
       where: { id, deletedAt: null },

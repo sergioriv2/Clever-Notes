@@ -13,12 +13,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: process.env.JWT_EXPIRES_IN,
+      secretOrKey: process.env.JWT_SECRET,
     });
   }
 
   async validate(payload: any) {
     // Validate if user exists
+    console.log(payload);
     const user = await this.userService.findByEmail(payload.email);
 
     if (!user) {

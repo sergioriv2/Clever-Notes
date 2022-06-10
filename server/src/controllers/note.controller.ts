@@ -19,14 +19,19 @@ import { AuthGuard } from '@nestjs/passport';
 export class NoteController {
   constructor(private noteService: NoteService) {}
 
+  // Retrieve all notes from the user requesting the endpoint
+  @UseGuards(AuthGuard('jwt'))
   @Get()
-  async getAll(): Promise<NoteEntity[]> {
-    return await this.noteService.getAll();
+  async getAll(@Request() req): Promise<object> {
+    const results = await this.noteService.getAll(req.user.id);
+    return { results };
   }
-
+  // Retrieve a specific note from the user requesting the endpoint
+  @UseGuards(AuthGuard('jwt'))
   @Get(':id')
-  async getOne(@Param('id') id: number): Promise<NoteEntity> {
-    return await this.noteService.getById(id);
+  async getOne(@Param('id') id: number, @Request() req): Promise<object> {
+    const results = await this.noteService.getById(id, req.user.id);
+    return { results };
   }
 
   @UseGuards(AuthGuard('jwt'))
