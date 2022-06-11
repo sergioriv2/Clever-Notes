@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { MutableRefObject, useRef, useState } from "react";
 import { Button, Col, Container, Modal, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NoteForm from "../../components/Form/NoteForm";
@@ -6,11 +6,13 @@ import NotesList from "../../components/Note/NotesList";
 
 import AppContext from "../../components/context/AppContext";
 import useFetch from "../../hooks/useFetch";
+import { FormikProps } from "formik";
 
 const ActiveNotesView = () => {
   const [modal, setModal] = useState(false);
 
   const [selectedNote, setSelectedNote] = useState(undefined);
+  const [edit, setEdit] = useState(false);
 
   const { data, loading, refetch } = useFetch(
     `${process.env.REACT_APP_NOTES_ENDPOINT}`
@@ -19,6 +21,7 @@ const ActiveNotesView = () => {
   const handleClick = () => {
     setSelectedNote(undefined);
     setModal(!modal);
+    setEdit(false);
   };
 
   return (
@@ -27,6 +30,7 @@ const ActiveNotesView = () => {
         refetchNotes: refetch,
         selectedNote,
         setSelectedNote,
+        setEdit,
         setModal,
       }}
     >
@@ -64,7 +68,7 @@ const ActiveNotesView = () => {
           </Modal.Header>
           <Modal.Body className="my-2">
             <Container>
-              <NoteForm edit values={selectedNote} />
+              <NoteForm edit={edit} values={selectedNote} />
             </Container>
           </Modal.Body>
         </Modal>

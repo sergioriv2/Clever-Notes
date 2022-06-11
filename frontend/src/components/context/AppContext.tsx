@@ -11,6 +11,7 @@ interface Values {
   setSelectedNote: Function;
   setModal: Function;
   refetchNotes: Function;
+  setEdit: Function;
 }
 
 const AppContext = React.createContext<Values>({
@@ -18,6 +19,7 @@ const AppContext = React.createContext<Values>({
   setSelectedNote: () => {},
   setModal: () => {},
   refetchNotes: () => {},
+  setEdit: () => {},
 });
 
 export default AppContext;

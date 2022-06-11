@@ -14,6 +14,7 @@ const ArchivedNotesView = () => {
   return (
     <AppContext.Provider
       value={{
+        setEdit: () => {},
         refetchNotes: refetch,
         setSelectedNote: () => {},
         setModal: () => {},

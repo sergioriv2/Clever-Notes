@@ -6,7 +6,7 @@ import AppContext from "../../context/AppContext";
 
 const EditButton = () => {
   const { id } = useContext(NoteContext);
-  const { setModal, setSelectedNote } = useContext(AppContext);
+  const { setModal, setSelectedNote, setEdit } = useContext(AppContext);
 
   const handleClick = async () => {
     try {
@@ -25,6 +25,7 @@ const EditButton = () => {
       const data = await response.json();
       setSelectedNote(data.results);
       setModal(true);
+      setEdit(true);
     } catch (err) {
       console.log(err);
     }

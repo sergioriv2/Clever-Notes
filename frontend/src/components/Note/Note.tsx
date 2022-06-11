@@ -10,6 +10,7 @@ import NoteContext from "../context/NoteContext";
 import EditButton from "./Buttons/EditButton";
 
 import "./Note.css";
+import DeleteButton from "./Buttons/DeleteButton";
 
 interface NoteDefinition {
   id: number;
@@ -62,8 +63,8 @@ const Note = (props: NoteProps) => {
               ) : (
                 <ArchiveButton unarchive></ArchiveButton>
               )}
-
               <EditButton></EditButton>
+              <DeleteButton></DeleteButton>
             </Container>
           </Col>
         </Row>

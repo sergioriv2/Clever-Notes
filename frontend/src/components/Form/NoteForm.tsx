@@ -1,10 +1,11 @@
-import React, { useContext } from "react";
+import React, { MutableRefObject, useContext } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import * as Bootstrap from "react-bootstrap";
 import InputField from "./InputField";
 import RichInputField from "./RichInputField";
 import AppContext from "../context/AppContext";
+import Swal from "sweetalert2";
 
 interface FormValues {
   id?: number;
@@ -14,7 +15,7 @@ interface FormValues {
 
 interface NoteFormProps {
   values: FormValues | undefined;
-  edit: boolean;
+  edit?: boolean;
 }
 
 const NoteForm = ({ values, edit }: NoteFormProps) => {
@@ -27,7 +28,7 @@ const NoteForm = ({ values, edit }: NoteFormProps) => {
 
   const createMethod = async (formValues: FormValues) => {
     try {
-      await fetch(`${process.env.REACT_APP_NOTES_ENDPOINT}`, {
+      const response = await fetch(`${process.env.REACT_APP_NOTES_ENDPOINT}`, {
         method: "POST",
         mode: "cors",
         headers: {
@@ -37,9 +38,23 @@ const NoteForm = ({ values, edit }: NoteFormProps) => {
         body: JSON.stringify(formValues),
       });
 
+      const data = await response.json();
+
+      Swal.fire({
+        title: "Created",
+        text: data.results.msg,
+        icon: "success",
+      });
+
       refetchNotes();
     } catch (err) {
       console.log(err);
+
+      Swal.fire({
+        title: "Error",
+        text: "There was an error processing your request, try again later.",
+        icon: "error",
+      });
     } finally {
       setModal(false);
     }
@@ -47,19 +62,35 @@ const NoteForm = ({ values, edit }: NoteFormProps) => {
 
   const updateMethod = async (formValues: FormValues) => {
     try {
-      await fetch(`${process.env.REACT_APP_NOTES_ENDPOINT}${values?.id}`, {
-        method: "PUT",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + window.localStorage.getItem("token"),
-        },
-        body: JSON.stringify(formValues),
+      const response = await fetch(
+        `${process.env.REACT_APP_NOTES_ENDPOINT}${values?.id}`,
+        {
+          method: "PUT",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + window.localStorage.getItem("token"),
+          },
+          body: JSON.stringify(formValues),
+        }
+      );
+
+      const data = await response.json();
+
+      Swal.fire({
+        title: "Edited",
+        text: data.results.msg,
+        icon: "success",
       });
 
       refetchNotes();
     } catch (err) {
       console.log(err);
+      Swal.fire({
+        title: "Error",
+        text: "There was an error processing your request, try again later.",
+        icon: "error",
+      });
     } finally {
       setModal(false);
     }
