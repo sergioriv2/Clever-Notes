@@ -1,0 +1,19 @@
+.noteContainer {
+  border: 4px solid black;
+  min-height: 120px;
+  border-radius: 10px;
+}
+
+.noteTitle {
+  font-weight: bold;
+  font-size: 1.7em;
+}
+
+.noteButton {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+.noteButton:hover {
+}

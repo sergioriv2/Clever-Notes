@@ -27,7 +27,7 @@ const RichInputField = (
     const [, meta] = useField(name);
 
     return(
-        <Form.Group as={Row} className="my-3">
+        <Form.Group as={Row} className="mb-4">
             <Col xs={12} md={3}>
                 <Form.Label>
                 {label}

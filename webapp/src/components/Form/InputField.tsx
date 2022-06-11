@@ -17,7 +17,7 @@ const InputField = (
 
     const [field, meta] = useField(props);  
     return(
-        <Form.Group as={Row} className="my-3">
+        <Form.Group as={Row} className="mb-4">
             <Col xs={12} md={3}>
                 <Form.Label>
                     {label}
