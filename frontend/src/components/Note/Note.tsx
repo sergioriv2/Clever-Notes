@@ -44,15 +44,9 @@ const Note = (props: NoteProps) => {
           <Col xs={12} className="noteTitle mb-3">
             {note.title}
           </Col>
-          <Col xs={12}>
-            <Container
-              dangerouslySetInnerHTML={{ __html: note.content }}
-              className="p-0"
-              style={{ wordBreak: "break-word" }}
-            ></Container>
-          </Col>
+
           <Col xs={8} className="d-flex justify-items-end">
-            <p className="m-0">{`Last edited on ${moment(note.updatedAt).format(
+            <p className="m-0">{`Last edit on ${moment(note.updatedAt).format(
               "DD/MM/YYYY"
             )}`}</p>
           </Col>

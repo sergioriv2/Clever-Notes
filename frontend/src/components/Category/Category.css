@@ -1,0 +1,44 @@
+.categoriesListContainer {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  min-height: 200px;
+  max-height: 200px;
+  overflow-y: scroll;
+  scrollbar-color: #6969dd #e0e0e0;
+  scrollbar-width: thin;
+}
+
+.rmCategoryButton {
+  display: grid;
+  cursor: pointer;
+  place-items: center;
+}
+
+.rmCategoryButton:active {
+  /* color: white; */
+  transition: all 0.1s;
+}
+
+.categoryItem {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+}
+
+.categoriesListContainer::-webkit-scrollbar {
+  width: 20px;
+}
+
+.categoriesListContainer::-webkit-scrollbar-track {
+  /* background-color: darkgrey; */
+}
+
+.categoriesListContainer::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
+  background-clip: content-box;
+}
+
+.categoriesListContainer::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
+}

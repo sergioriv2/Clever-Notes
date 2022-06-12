@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from "react";
 
 import Header from "../../components/Home/Header";
-import {Outlet} from 'react-router-dom'
+import { Outlet } from "react-router-dom";
+import LoginContext from "../../components/context/LoginContext";
+
 const HomeLayout = () => {
-    return (
+  const { storedValue } = useContext(LoginContext);
+
+  return (
     <>
-        <Header></Header>
-        <Outlet></Outlet>
+      <Header></Header>
+      <Outlet></Outlet>
     </>
-    )
-}
+  );
+};
 
 export default HomeLayout;

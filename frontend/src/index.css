@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600;700&family=Quicksand:wght@400;500;700&family=Roboto&display=swap");
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -14,4 +16,53 @@ code {
 
 .quill > .ql-toolbar:first-child {
   display: none !important;
+}
+
+.modal-header {
+  border: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Josefin Sans", sans-serif !important;
+  text-transform: uppercase;
+  font-weight: 700 !important;
+}
+
+p,
+a,
+button,
+input {
+  font-family: "Quicksand", sans-serif !important;
+  font-weight: 500 !important;
+}
+
+button {
+  font-weight: 700 !important;
+}
+
+.globalButton {
+  border-radius: 20px !important;
+  background-color: #d70040 !important;
+  border: 4px solid transparent !important;
+}
+
+.globalButton-secondary {
+  border-radius: 20px !important;
+  border: 4px solid #d70040 !important;
+  background-color: #eee !important;
+  color: black !important;
+}
+
+.globalButton:active {
+  transform: translateY(5px) !important;
+  transition: all 0.2s;
+}
+.globalButton-secondary:active {
+  transform: translateY(5px) !important;
+  transition: all 0.2s;
 }

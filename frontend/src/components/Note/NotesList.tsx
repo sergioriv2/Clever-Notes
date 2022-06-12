@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Col, Container, Row, Spinner } from "react-bootstrap";
+import Filter from "../Filter/Filter";
 import Note from "./Note";
 
 interface NoteDefinition {

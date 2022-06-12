@@ -2,10 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 
 // This options will be passed by default if the user doesn't add their own options as an argument
 
-const useFetch = (endpoint: string) => {
+const useFetch = (endpointProps: string) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const [endpoint, setEndpoint] = useState(endpointProps);
 
   const fetchJSON = useCallback(async () => {
     setLoading(true);
@@ -15,16 +16,15 @@ const useFetch = (endpoint: string) => {
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": "Bearer " + window.localStorage.getItem("token"),
+          Authorization: "Bearer " + window.localStorage.getItem("token"),
         },
       });
       const data = await response.json();
-      return setData(data.results);
+
+      if (response.status === 200) return setData(data?.results);
     } catch (err: any) {
-        
       console.log(err);
       return setError(err);
-
     } finally {
       setLoading(false);
     }
@@ -43,6 +43,7 @@ const useFetch = (endpoint: string) => {
     loading,
     error,
     refetch,
+    setEndpoint,
   };
 };
 

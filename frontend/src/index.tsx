@@ -9,10 +9,12 @@ import {
   faPencil,
   faBoxArchive,
   faUpload,
+  faTag,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
-library.add(faTrash, faPencil, faBoxArchive, faUpload);
+library.add(faTrash, faPencil, faBoxArchive, faUpload, faTag, faXmark);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

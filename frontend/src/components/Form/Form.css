@@ -1,0 +1,20 @@
+.errorLabel {
+  font-weight: 700 !important;
+  text-decoration: underline;
+  color: red;
+}
+
+.rdw-editor-wrapper {
+  border: 1px solid rgb(0, 0, 0, 0.2) !important;
+  border-radius: 3px !important;
+}
+
+.rdw-editor-main {
+  min-height: 150px !important;
+  margin: 0 20px;
+}
+
+/* .richTextEditor .ql-editor > * {
+  font-family: "Roboto", sans-serif !important;
+  font-size: 16px;
+} */

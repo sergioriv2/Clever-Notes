@@ -1,0 +1,24 @@
+.headerContainer {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navLink {
+  font-weight: 700;
+  color: black !important;
+  font-size: 1.05em;
+}
+
+.navLink:hover {
+  text-decoration: underline;
+}
+
+.navLoginButton {
+  border-radius: 20px;
+  background-color: #d70040 !important;
+  border: none !important;
+}
+
+.navLoginButton:active {
+  transform: translateY(5px) !important;
+  transition: all 0.2s;
+}
