@@ -1,0 +1,1 @@
+bash -c 'npm run start:dev --prefix ./backend & npm start --prefix frontend & wait'
