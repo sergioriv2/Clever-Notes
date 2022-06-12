@@ -23,18 +23,16 @@ export class NoteService {
   }
 
   // Create a new note
-  async create(note: NoteDto, id: number): Promise<boolean> {
+  async create(note: NoteDto, id: number): Promise<Note> {
     const date = new Date();
 
-    await this.noteRepository.create<Note>({
+    return await this.noteRepository.create<Note>({
       content: note.content,
       title: note.title,
       userId: id,
       createdAt: date,
       updatedAt: date,
     });
-
-    return true;
   }
 
   // Change the archived note state

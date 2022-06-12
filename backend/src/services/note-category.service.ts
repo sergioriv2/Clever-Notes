@@ -1,6 +1,6 @@
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { NOTE_CATEGORY_REPOSITORY } from 'src/core/constants';
-import { NotexCategory } from '../entities';
+import { Category, Note, NotexCategory } from '../entities';
 import { NoteCategory } from '../dto/';
 
 @Injectable()
@@ -16,6 +16,52 @@ export class NoteCategoryService {
     if (!result) throw new NotFoundException();
 
     return result;
+  }
+
+  async findCategoriesByNoteId(id: number): Promise<object[]> {
+    const result = await this.noteCategoryRepository.findAll({
+      where: { noteId: id },
+      include: [
+        {
+          model: Category,
+          required: true,
+          attributes: ['id', 'description'],
+        },
+      ],
+      attributes: ['category.id'],
+    });
+
+    if (!result) throw new NotFoundException();
+
+    const formatResult = result.map(({ category }: any) => {
+      const { dataValues } = category;
+      return dataValues;
+    });
+
+    return formatResult;
+  }
+
+  async findNotesByCategoryId(id: number): Promise<object[]> {
+    const result = await this.noteCategoryRepository.findAll({
+      where: { categoryId: id },
+      include: [
+        {
+          model: Note,
+          required: true,
+          attributes: ['id', 'content', 'title', 'updatedAt'],
+        },
+      ],
+      attributes: ['note.id'],
+    });
+
+    if (!result) throw new NotFoundException();
+
+    const formatResult = result.map(({ note }: any) => {
+      const { dataValues } = note;
+      return dataValues;
+    });
+
+    return formatResult;
   }
 
   async create(noteId: number, noteCategory: NoteCategory): Promise<boolean> {

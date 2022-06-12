@@ -10,14 +10,14 @@ export class AuthController {
   @UseGuards(AuthGuard('local'))
   @Post('login')
   async login(@Request() req) {
-    const token = await this.authService.login(req.user);
+    const results = await this.authService.login(req.user);
 
-    return { token };
+    return { results };
   }
 
   @Post('signup')
   async signup(@Body() user: UserDto) {
-    const token = await this.authService.signup(user);
-    return { token };
+    const results = await this.authService.signup(user);
+    return { results };
   }
 }

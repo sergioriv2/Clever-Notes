@@ -7,6 +7,7 @@ import {
   Param,
   Post,
   Put,
+  Request,
   UseGuards,
 } from '@nestjs/common';
 import { CategoryService } from '../services';
@@ -17,21 +18,24 @@ import { AuthGuard } from '@nestjs/passport';
 export class CategoryController {
   constructor(private readonly categoriesService: CategoryService) {}
 
+  @UseGuards(AuthGuard('jwt'))
   @Get()
-  async getAll(): Promise<object> {
-    const results = await this.categoriesService.getAll();
+  async getAll(@Request() req): Promise<object> {
+    const results = await this.categoriesService.getAll(req.user.id);
 
     return { results };
   }
+
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  async create(@Body() category: CategoryDto): Promise<object> {
-    const results = await this.categoriesService.create(category);
+  async create(@Body() category: CategoryDto, @Request() req): Promise<object> {
+    console.log(req.user.id);
+    const results = await this.categoriesService.create(category, req.user.id);
     return { results };
   }
 
   @UseGuards(AuthGuard('jwt'))
-  @Put('id')
+  @Put(':id')
   async update(
     @Body() category: CategoryDto,
     @Param('id') id: number,
@@ -44,7 +48,7 @@ export class CategoryController {
   }
 
   @UseGuards(AuthGuard('jwt'))
-  @Delete('id')
+  @Delete(':id')
   async delete(@Param('id') id: number): Promise<object> {
     const results = await this.categoriesService.delete(id);
     if (!results) throw new InternalServerErrorException();

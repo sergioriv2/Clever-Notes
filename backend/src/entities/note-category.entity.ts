@@ -11,20 +11,20 @@ import { Note } from 'src/entities/note.entity';
 
 @Table
 export class NotexCategory extends Model<NotexCategory> {
-  @Column({ type: DataType.INTEGER, autoIncrement: true, primaryKey: true })
-  id?: number;
-
   @ForeignKey(() => Category)
-  @Column
+  @Column({ type: DataType.INTEGER, primaryKey: true })
   categoryId: number;
 
   @BelongsTo(() => Category)
   category: Category;
 
   @ForeignKey(() => Note)
-  @Column
+  @Column({ type: DataType.INTEGER, primaryKey: true })
   noteId: number;
 
   @BelongsTo(() => Note)
   note: Note;
+
+  @Column({ defaultValue: true })
+  active: boolean;
 }

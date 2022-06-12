@@ -50,7 +50,7 @@ export class NoteController {
 
     if (!result) throw new InternalServerErrorException();
 
-    return { results: { msg: 'Successfully created.' } };
+    return { results: { msg: 'Note successfully created.', note: result } };
   }
 
   // Modify the archive state of a specified note
@@ -64,7 +64,7 @@ export class NoteController {
 
     if (!result) throw new InternalServerErrorException();
 
-    return { results: { msg: 'Successfully modified.' } };
+    return { results: { msg: 'Note successfully updated.' } };
   }
 
   @UseGuards(AuthGuard('jwt'))
@@ -77,7 +77,7 @@ export class NoteController {
 
     if (!result) throw new InternalServerErrorException();
 
-    return { results: { msg: 'Successfully updated.' } };
+    return { results: { msg: 'Note successfully updated.' } };
   }
 
   @UseGuards(AuthGuard('jwt'))
@@ -87,6 +87,6 @@ export class NoteController {
 
     if (!result) throw new InternalServerErrorException();
 
-    return { results: { msg: 'Successfully updated.' } };
+    return { results: { msg: 'Note successfully deleted.' } };
   }
 }

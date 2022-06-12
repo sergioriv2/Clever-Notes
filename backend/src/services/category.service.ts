@@ -11,16 +11,17 @@ export class CategoryService {
   ) {}
 
   // Get all categories
-  async getAll(): Promise<Category[]> {
+  async getAll(userId: number): Promise<Category[]> {
     return await this.categoryRepository.findAll<Category>({
-      where: { deletedAt: null },
+      where: { deletedAt: null, userId },
+      attributes: ['id', 'description'],
     });
   }
 
   // Get a single category
-  async getById(id: number): Promise<Category> {
+  async getById(id: number, userId: number): Promise<Category> {
     const category = await this.categoryRepository.findOne<Category>({
-      where: { deletedAt: null, id },
+      where: { deletedAt: null, userId, id },
     });
 
     if (!category)
@@ -30,10 +31,11 @@ export class CategoryService {
   }
 
   // Create a new category
-  async create(category: CategoryDto): Promise<Category> {
+  async create(category: CategoryDto, userId: number): Promise<Category> {
     const date = new Date();
     return await this.categoryRepository.create<Category>({
-      ...category,
+      description: category.description,
+      userId,
       createdAt: date,
       updatedAt: date,
     });

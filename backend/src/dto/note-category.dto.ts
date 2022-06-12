@@ -6,4 +6,6 @@ export class NoteCategory {
   @IsNotEmpty()
   @IsNumber({}, { each: true })
   readonly categories: number[];
+
+  readonly active: boolean;
 }

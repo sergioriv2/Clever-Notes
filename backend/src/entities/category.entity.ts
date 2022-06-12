@@ -1,4 +1,12 @@
-import { Table, Column, Model, DataType } from 'sequelize-typescript';
+import {
+  Table,
+  Column,
+  Model,
+  DataType,
+  ForeignKey,
+  BelongsTo,
+} from 'sequelize-typescript';
+import { User } from './user.entity';
 
 @Table({
   paranoid: true,
@@ -10,6 +18,13 @@ export class Category extends Model<Category> {
 
   @Column({ allowNull: false })
   description: string;
+
+  @ForeignKey(() => User)
+  @Column
+  userId?: number;
+
+  @BelongsTo(() => User)
+  user?: User;
 
   @Column({ allowNull: true })
   deletedAt: Date;
