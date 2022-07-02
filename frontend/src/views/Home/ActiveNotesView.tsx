@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import NotesList from "../../components/Note/NotesList";
 

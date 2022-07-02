@@ -1,11 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext } from "react";
 import Swal from "sweetalert2";
-import CategoryContext from "../context/CategoryContext";
 
 const RemoveCategoryButton = ({ categoryId }: { categoryId: number }) => {
-  // const { categories, setCategories } = useContext(CategoryContext);
-
   const handleClick = async () => {
     const { isConfirmed } = await Swal.fire({
       title: "Remove category",
@@ -23,10 +19,6 @@ const RemoveCategoryButton = ({ categoryId }: { categoryId: number }) => {
           Authorization: "Bearer " + window.localStorage.getItem("token"),
         },
       });
-
-      // const response = categories.filter((x: any) => x.id !== categoryId);
-
-      // setCategories(response);
     }
   };
 

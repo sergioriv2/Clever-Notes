@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import AppContext from "../../components/context/AppContext";
 import NotesList from "../../components/Note/NotesList";
 import useFetch from "../../hooks/useFetch";

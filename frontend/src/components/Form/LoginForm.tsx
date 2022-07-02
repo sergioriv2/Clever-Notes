@@ -2,7 +2,6 @@ import { Form, Formik } from "formik";
 import * as Bootstrap from "react-bootstrap";
 import InputField from "./InputField";
 import * as Yup from "yup";
-import Swal from "sweetalert2";
 import LoginContext from "../context/LoginContext";
 import { useContext } from "react";
 

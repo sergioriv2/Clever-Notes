@@ -4,7 +4,6 @@ import LoginForm from "../Form/LoginForm";
 
 const LoginButton = () => {
   const [loginModal, setLoginModal] = useState(false);
-  const [registerForm, setRegisterForm] = useState(false);
 
   const handleClick = () => {
     setLoginModal(!loginModal);

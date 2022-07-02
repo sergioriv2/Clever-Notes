@@ -1,14 +1,6 @@
 import React, { useContext } from "react";
 
-import {
-  Container,
-  Image,
-  Navbar,
-  Nav,
-  Button,
-  Row,
-  Col,
-} from "react-bootstrap";
+import { Container, Image, Navbar, Nav, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import LoginContext from "../context/LoginContext";
 

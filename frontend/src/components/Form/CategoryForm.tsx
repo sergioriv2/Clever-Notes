@@ -1,6 +1,5 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import CategoryContext from "../context/CategoryContext";
 
 interface FormValues {
   description: string;
