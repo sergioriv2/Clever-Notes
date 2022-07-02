@@ -1,18 +1,16 @@
-# Clever Notes
+# Clever Notes 🧠
+ 
+Start creating interesting and useful notes using 'Clever Notes'. Everything you need to start using this application is easily creating your user. 
 
-## Engines
+The front-end's design is responsive and mobile first.
 
-* Typescript
-* npm v16.14.0
+## 🖥 Tech Stack
 
-Back-end
-* NestJS v8.0.0
-* Sequelize v6.2.0
+**Front-end**: React (v18.1.0), Bootstrap, Typescript, HTML/CSS
 
-Front-end
-* React v18.1.0
+**Back-end**: NestJS(v8.0), Sequelize (v6.2.0), Typescript
 
-## Tools
+## ⚙ Tools and Engines
 
 Back-end
 * bcryptjs v2.4.3
